@@ -20,7 +20,7 @@
 		<div id="content">
 			<div id="code">
 				<span class="comments">/**</span><br />
-				<span class="space"/><span class="comments">* We are both Fudan SSers and programmers,</span><br />
+				<span class="space"/><span class="comments">* We are all people in the same province ,</span><br />
 				<span class="space"/><span class="comments">* so I write some code to celebrate our 1st anniversary.</span><br />
 				<span class="space"/><span class="comments">*/</span><br />
 				Boy i = <span class="keyword">new</span> Boy(<span class="string">"Jay Yao"</span>);<br />
@@ -99,6 +99,21 @@
 			adjustCodePosition();
 			$("#code").typewriter();
 		}
+	</script>
+
+	
+	<audio controls="controls" loop="loop" id="audio" autoplay preload="auto">
+		<!--周桃桃 - 冰菊物语 (古筝版)-->
+		--<source src="IcyChrysanthemum.ogg" type="audio/ogg" />
+		<source src="IcyChrysanthemum.mp3" type="audio/mpeg" />
+		Your browser does not support the audio element.
+	</audio>
+
+	<script>
+	window.onload = function() {
+	    var audio = document.getElementById('audio');
+	    audio.play();
+	}
 	</script>
 </body>
 </html>
