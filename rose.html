@@ -1,12 +1,208 @@
 
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-	<title>rose</title>
-	<script type="text/javascript" src="js/rose.js"></script>
+	<meta charset="utf-8">
+   <title>Bootstrap 实例 - 标签页（Tab）插件</title>
+   <link href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+   <script src="//static.runoob.com/assets/CodeMirror/lib/codemirror.min.js"></script>
+	<link rel="stylesheet" href="//static.runoob.com/assets/CodeMirror/lib/codemirror.css">
+	<script src="//static.runoob.com/assets/CodeMirror/mode/htmlmixed/htmlmixed.js"></script>
+	<script src="//static.runoob.com/assets/CodeMirror/mode/css/css.js"></script>
+	<script src="//static.runoob.com/assets/CodeMirror/mode/javascript/javascript.js"></script>
+	<script src="//static.runoob.com/assets/CodeMirror/mode/xml/xml.js"></script>
+	<script src="//c.runoob.com/wp-content/themes/toolrunoob/assets/js/format.js"></script>
+   	<style type="text/css">
+	.CodeMirror {
+	  border: 1px solid #fff;
+	  height: auto;
+	}
+	#iframeResult {
+		display:block;
+		overflow:hidden;
+		border:0!important;
+		min-width:100px;
+		width:100%;
+		height:100%;
+		background-color:#fff
+	}
+   	</style>
 </head>
-
 <body>
-<canvas id="c"></canvas>
+
+<ul id="myTab" class="nav nav-tabs">
+   <li><a href="#html" data-toggle="tab">HTML</a></li>
+   <li><a href="#css" data-toggle="tab">CSS</a></li>
+   <li><a href="#js" data-toggle="tab">JS</a></li>
+   <li><a href="#result" data-toggle="tab">结果：</a></li>
+    <li  class="pull-right"><a href="//c.runoob.com/codedemo/5588" target="_blank">菜鸟工具</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+   <div class="tab-pane fade" id="html">
+      <textarea placeholder="输入 HTML 代码……" id="code-html"  class="form-control" name="code" rows="10"></textarea>
+   </div>
+   <div class="tab-pane fade" id="css">
+      <textarea placeholder="输入 CSS 代码……" id="code-css" class="form-control" rows="10"></textarea>
+   </div>
+    <div class="tab-pane fade" id="js">
+      <textarea placeholder="输入 JavaScript 代码……" id="code-js" class="form-control" name="code" rows="10"></textarea>
+   </div>
+    <div class="tab-pane fade" id="result" style="padding:15px;height: calc(100vh - 50px);">
+   
+    </div>
+   
+</div>
+<script>
+window.onload = function() {
+	var height = $(window).height();
+	
+	
+	  var html_editor, css_editor, js_editor;
+	// CM OPTIONS
+	var cm_opt = {
+		mode: 'text/html',
+		gutter: true,
+		lineNumbers: true,
+		lineWrapping: true,
+		autoCloseBrackets:true,
+		autoCloseTags:true
+	};
+	
+	var prepareSource = function() {
+		var html = html_editor.getValue(),
+			css = css_editor.getValue(),
+			js = js_editor.getValue(),
+			src = html;
+			if (html) {
+				var patternHtmlTag = /<html([^>]*)>/im;
+				var array_matches_html_tag = patternHtmlTag.exec(src);
+				if (array_matches_html_tag) {
+					src = src.replace('<html>', '<html ' + array_matches_html_tag[1] + '>');
+				}
+				var patternHead = /<head[^>]*>((.|[\n\r])*)<\/head>/im
+				var array_matches_head = patternHead.exec(src);
+
+				var patternBodyTag = /<body([^>]*)>/im;
+				var array_matches_body_tag = patternBodyTag.exec(src);
+				if (array_matches_body_tag) {
+					src = src.replace('<body>', '<body ' + array_matches_body_tag[1] + '>');
+				} 
+				
+			} 
+			//console.log(css);
+			if (css.indexOf('<style>') !== -1) {
+				$(".alert-danger span").text('CSS 编辑框不需要 <style> 标签');
+				$(".alert-danger").show().delay(5000).fadeOut();
+				return;
+			} else if (js.indexOf('<script>') !== -1) {
+				$(".alert-danger span").text('JavaScript 编辑框不需要 <script> 标签');
+				$(".alert-danger").show().delay(5000).fadeOut();
+				return;
+			} else {
+				$(".alert-danger").hide();
+			}
+
+			// CSS
+		    if(css) {
+				css = '<style>' + css + '</style>';
+				if (array_matches_head) {
+					src = src.replace('</head>', css + '</head>');
+				} else if (array_matches_body_tag) {
+					src = src.replace('</body>', css + '</body>');
+				} else {
+					src +=  css;
+				}
+			}
+
+			// Javascript
+			if(js) {
+				js = '<script>' + js + '<\/script>';
+				if (array_matches_body_tag) {
+					src = src.replace('</body>', js + '</body>');
+				}else {
+					src +=  js;
+				}
+			}
+		
+		return src;
+	};
+	
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+	  if(html_editor instanceof CodeMirror){
+		  html_editor.refresh();
+	  } else {
+		var html_box = document.querySelector('#code-html');
+		html_editor = CodeMirror.fromTextArea(html_box, cm_opt);
+				htmlstr = "<canvas id=\"c\"><\/canvas>";
+		html_editor.setValue(htmlstr);
+			  }
+		
+	  // CSS EDITOR
+	  	if(css_editor instanceof CodeMirror){
+	  		css_editor.refresh();
+		} else {
+			cm_opt.mode = 'css';
+			var css_box = document.querySelector('#code-css');
+			css_editor = CodeMirror.fromTextArea(css_box, cm_opt);
+					}
+		
+		// JAVASCRIPT EDITOR
+	  	if(js_editor instanceof CodeMirror){
+	  		js_editor.refresh();
+		} else {
+			cm_opt.mode = 'javascript';
+			var js_box = document.querySelector('#code-js');
+			js_editor = CodeMirror.fromTextArea(js_box, cm_opt);
+						jsstr = "var b = document.body;  \nvar c = document.getElementsByTagName('canvas')[0];  \nvar a = c.getContext('2d');  \ndocument.body.clientWidth;  \n\nwith(m=Math)C=cos,S=sin,P=pow,R=random;c.width=c.height=f=600;h=-250;function p(a,b,c){if(c>60)return[S(a*7)*(13+5\/(.2+P(b*4,4)))-S(b)*50,b*f+50,625+C(a*7)*(13+5\/(.2+P(b*4,4)))+b*400,a*1-b\/2,a];A=a*2-1;B=b*2-1;if(A*A+B*B<1){if(c>37){n=(j=c&1)?6:4;o=.5\/(a+.01)+C(b*125)*3-a*300;w=b*h;return[o*C(n)+w*S(n)+j*610-390,o*S(n)-w*C(n)+550-j*350,1180+C(B+A)*99-j*300,.4-a*.1+P(1-B*B,-h*6)*.15-a*b*.4+C(a+b)\/5+P(C((o*(a+1)+(B>0?w:-w))\/25),30)*.1*(1-B*B),o\/1e3+.7-o*w*3e-6]}if(c>32){c=c*1.16-.15;o=a*45-20;w=b*b*h;z=o*S(c)+w*C(c)+620;return[o*C(c)-w*S(c),28+C(B*.5)*99-b*b*b*60-z\/2-h,z,(b*b*.3+P((1-(A*A)),7)*.15+.3)*b,b*.7]}o=A*(2-b)*(80-c*2);w=99-C(A)*120-C(b)*(-h-c*4.9)+C(P(1-b,7))*50+c*2;z=o*S(c)+w*C(c)+700;return[o*C(c)-w*S(c),B*99-C(P(b, 7))*50-c\/3-z\/1.35+450,z,(1-b\/1.2)*.9+a*.1, P((1-b),20)\/4+.05]}}setInterval('for(i=0;i<1e4;i++)if(s=p(R(),R(),i%46\/.74)){z=s[2];x=~~(s[0]*f\/z-h);y=~~(s[1]*f\/z-h);if(!m[q=y*f+x]|m[q]>z)m[q]=z,a.fillStyle=\"rgb(\"+~(s[3]*h)+\",\"+~(s[4]*h)+\",\"+~(s[3]*s[3]*-80)+\")\",a.fillRect(x,y,1,1)}',0)";
+			js_editor.setValue(jsstr);
+					}
+	  	send_data = prepareSource();
+	  	submitTryit(send_data);
+  		
+	  	
+	});
+		$('#myTab li:eq(0) a').tab('show');
+		
+	html_editor.on('change',function (inst, changes) {
+  		send_data = prepareSource();
+  		submitTryit(send_data);
+  		
+  	});
+	css_editor.on('change', function (inst, changes) {
+  		send_data = prepareSource();
+  		submitTryit(send_data);
+  		
+  	});
+	js_editor.on('change', function (inst, changes) {
+  		send_data = prepareSource();
+  		submitTryit(send_data);
+  		
+  	});
+  	height = height*0.93
+  	html_editor.setSize('100%', height);
+    js_editor.setSize('100%', height);
+    css_editor.setSize('100%', height);
+
+
+}
+function submitTryit(text) {
+		var ifr = document.createElement("iframe");
+		ifr.setAttribute("frameborder", "0");
+		ifr.setAttribute("id", "iframeResult");  
+		document.getElementById("result").innerHTML = "";
+		document.getElementById("result").appendChild(ifr);
+
+
+		var ifrw = (ifr.contentWindow) ? ifr.contentWindow : (ifr.contentDocument.document) ? ifr.contentDocument.document : ifr.contentDocument;
+		var ifrwd = ifrw.document;
+		ifrwd.open();
+		ifrwd.write(text);  
+		ifrwd.close();
+	}
+</script>
+	
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 </body>
 </html>
