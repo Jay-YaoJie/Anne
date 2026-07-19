@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>李珍珍 & 姚勤杰 · 合婚命理玄机</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f7f3eb;
+            background-image: radial-gradient(circle at 20% 30%, rgba(180, 180, 200, 0.1) 0%, transparent 35%),
+                              radial-gradient(circle at 80% 70%, rgba(200, 180, 140, 0.12) 0%, transparent 40%);
+            font-family: 'Noto Serif SC', 'Times New Roman', '宋体', '仿宋', '华文楷体', '楷体', Georgia, serif;
+            color: #3e2e1f;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+        .cosmic-container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(254, 249, 238, 0.8);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            background: #fef9ed;
+            border: 1px solid #dac09a;
+            box-shadow: 0 25px 55px -12px rgba(80, 50, 20, 0.28), inset 0 1px 0 #fff5e6;
+            border-radius: 48px 48px 40px 40px;
+            padding: 2.5rem 2.2rem;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        .cosmic-container::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border-radius: inherit;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.06"><path d="M100 22 L107 56 L143 64 L107 72 L100 106 L93 72 L57 64 L93 56 Z" fill="%23997b5c"/><circle cx="158" cy="44" r="2.6" fill="%23997b5c"/><circle cx="38" cy="158" r="3.2" fill="%23997b5c"/></svg>');
+            pointer-events: none;
+        }
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            text-align: center;
+            letter-spacing: 6px;
+            color: #5d4430;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 0 rgba(255,245,220,0.8);
+            font-family: "华文楷体", "KaiTi", "楷体", "Noto Serif SC", serif;
+        }
+        .sub-header {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #8b7355;
+            margin-bottom: 2rem;
+            border-bottom: 1px dashed #ccb690;
+            padding-bottom: 1.2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: rgba(250, 244, 235, 0.72);
+            backdrop-filter: blur(5px);
+            border: 1px solid #e3cfb0;
+            border-radius: 32px;
+            padding: 1.6rem 1.9rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 7px 20px rgba(140, 100, 60, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 30px rgba(120, 70, 30, 0.13);
+        }
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 400;
+            color: #7b5e3b;
+            border-left: 8px solid #c8a87c;
+            padding-left: 1.3rem;
+            margin-bottom: 1.4rem;
+            font-family: "华文楷体", "KaiTi", serif;
+            letter-spacing: 2px;
+        }
+        .bazi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.9rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .bazi-pillar {
+            background: #f7ede0;
+            border-radius: 28px;
+            padding: 0.7rem 0.2rem;
+            font-weight: 450;
+            box-shadow: inset 0 0 0 1px #e7d7bd;
+        }
+        .pillar-title {
+            font-size: 0.75rem;
+            color: #aa8b6e;
+            letter-spacing: 2px;
+        }
+        .pillar-content {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #4d3320;
+        }
+        .flex-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .badge {
+            background: #dac5a5;
+            color: #2d2416;
+            padding: 0.25rem 1rem;
+            border-radius: 16px;
+            font-size: 0.9rem;
+        }
+        .wuxing-tag {
+            background: #f1e6d6;
+            padding: 0.3rem 1.4rem;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+        .poem-text {
+            font-style: italic;
+            background: #f9f2e5;
+            padding: 1.2rem;
+            border-radius: 24px;
+            color: #5b4a36;
+            font-size: 1.05rem;
+            text-align: center;
+        }
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #dac29c, transparent);
+            margin: 1.6rem 0;
+            opacity: 0.5;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddc7a5;
+            margin: 1.2rem 0;
+        }
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #ad8b67;
+            margin-top: 2rem;
+        }
+        @media (max-width: 600px) {
+            .cosmic-container { padding: 1.8rem 1.2rem; }
+            .pillar-content { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="cosmic-container">
+    <h1>💞 李珍珍 & 姚勤杰</h1>
+    <div class="sub-header">
+        <span>👰 李珍珍 · 1990年四月十九卯时</span>
+        <span>🤵 姚勤杰 · 1994年二月廿六卯时</span>
+    </div>
+
+    <!-- 双方八字并排 -->
+    <div class="card">
+        <div class="section-title">📜 双方八字 · 四柱合参</div>
+        <div class="flex-wrap" style="justify-content: center; gap: 1.5rem;">
+            <div style="flex:1; min-width:250px;">
+                <p style="text-align:center; font-weight:bold;">🌷 李珍珍 (坤造)</p>
+                <div class="bazi-grid">
+                    <div class="bazi-pillar"><div class="pillar-title">年</div><div class="pillar-content">庚午</div></div>
+                    <div class="bazi-pillar"><div class="pillar-title">月</div><div class="pillar-content">辛巳</div></div>
+                    <div class="bazi-pillar"><div class="pillar-title">日</div><div class="pillar-content">戊寅</div></div>
+                    <div class="bazi-pillar"><div class="pillar-title">时</div><div class="pillar-content">乙卯</div></div>
+                </div>
+                <p style="text-align:center;">日主<strong>戊土</strong> · 身强 · 喜金水木</p>
+            </div>
+            <div style="flex:1; min-width:250px;">
+                <p style="text-align:center; font-weight:bold;">🌊 姚勤杰 (乾造)</p>
+                <div class="bazi-grid">
+                    <div class="bazi-pillar"><div class="pillar-title">年</div><div class="pillar-content">甲戌</div></div>
+                    <div class="bazi-pillar"><div class="pillar-title">月</div><div class="pillar-content">戊辰</div></div>
+                    <div class="bazi-pillar"><div class="pillar-title">日</div><div class="pillar-content">壬戌</div></div>
+                    <div class="bazi-pillar"><div class="pillar-title">时</div><div class="pillar-content">癸卯</div></div>
+                </div>
+                <p style="text-align:center;">日主<strong>壬水</strong> · 身弱 · 喜金水</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 五行与日主互动 -->
+    <div class="card">
+        <div class="section-title">☯️ 日主生克 · 五行交融</div>
+        <p><strong>戊土 (女) 克 壬水 (男)</strong>，表面为土制水，实则阴阳相吸。李珍珍戊土厚重，姚勤杰壬水浩荡，恰似<strong>高山环抱江河</strong>，形成“山环水抱”之吉象。但须注意土重水弱时，女方可能显得强势，男方需被包容理解。</p>
+        <div style="display:flex; flex-wrap:wrap; gap:1.5rem; margin-top:1rem;">
+            <div><span class="wuxing-tag">🔥 女命火土旺</span> <span class="wuxing-tag">💧 男命喜金水</span></div>
+            <div><span class="wuxing-tag">🌊 男命水弱需扶</span> <span class="wuxing-tag">🏔️ 女命土实能承</span></div>
+        </div>
+        <p style="margin-top:0.8rem;">⚖️ <strong>互补之处：</strong> 女命八字缺水，男命日主为水，可互相滋润；男命杀重身弱，女命官印相生能给予支持。共喜金水，生活品味与长远目标易趋一致。</p>
+    </div>
+
+    <!-- 婚姻宫与十神交互 -->
+    <div class="card">
+        <div class="section-title">💒 婚姻宫 · 夫妻星感应</div>
+        <div class="flex-wrap">
+            <div style="flex:1;">
+                <p><strong>👰 李珍珍：</strong>日支<strong>寅木七杀</strong>，时柱<strong>乙卯正官</strong>。官杀混杂，内心对感情要求高。夫宫寅木与男命日支戌土形成<strong>寅戌相合</strong> (半合火局)，双方有深层吸引力，且火为女命印星，代表男方会激发女方的包容与母性。</p>
+            </div>
+            <div style="flex:1;">
+                <p><strong>🤵 姚勤杰：</strong>日支<strong>戌土七杀</strong>，妻宫坐杀，压力即动力。妻星为火土（戊土偏财），与李珍珍日主戊土直接对应。戌土与女命夫宫寅木相合，婚姻宫相合是重要吉兆，主缘分深厚，不易分离。</p>
+            </div>
+        </div>
+        <div class="poem-text" style="margin-top:1rem;">
+            🌸 寅戌拱火暖寒江，乙木正官映月光。<br>官杀虽云多纠葛，合和化印情意长。
+        </div>
+    </div>
+
+    <!-- 紫微合盘简析 -->
+    <div class="card">
+        <div class="section-title">🔮 紫微斗数 · 合盘浅析</div>
+        <p><strong>女方命宫武曲天相，男方命宫天机。</strong> 天机主智，武曲天相主刚毅辅佐，组合为<strong>智谋配执行</strong>，事业生活可互补。双方迁移宫与夫妻宫有太阳巨门、太阴等星曜交互，沟通上容易出现男方说理、女方重感觉的模式，需注意言语分寸。</p>
+        <p>⭐ 女方身宫天同（福星），男方身宫天机，晚年生活趋向安逸和谐。子息宫无严重冲克，子女缘分正常。总体合盘<strong>中等偏吉</strong>，关键在于后天经营。</p>
+    </div>
+
+    <!-- 注意事项与调和之道 -->
+    <div class="card">
+        <div class="section-title">🪷 婚后锦囊 · 调和之道</div>
+        <p>1. <strong>流年大运同步：</strong> 双方喜用神均为金水，未来金水流年（如2028戊申、2032壬子等）将共同受益，事业发展与家庭财富同步提升。</p>
+        <p>2. <strong>沟通模式：</strong> 女方戊土固执，男方壬水通变，宜“以柔济刚”。男方多表达感受，女方多给予鼓励，避免土克水过甚而让男方感觉压抑。</p>
+        <p>3. <strong>家居风水：</strong> 住宅宜布置水景或黑色、蓝色元素（补水），卧室避免过多红色、黄色。可共同饲养鱼类，增强水运。</p>
+        <p>4. <strong>小名英文名加持：</strong> 女方小名“若水”、英文名Marina，男方小名“北辰”、英文名Caspian，皆为强力补水组合，婚后称呼可常唤此名，潜移默化增强水性能量，助婚姻和谐。</p>
+    </div>
+
+    <!-- 总结 -->
+    <div class="card">
+        <div class="section-title">🌌 综合断语</div>
+        <div class="poem-text">
+            戊土高山拥壬水，北辰若水两相宜。<br>
+            寅戌合火添温暖，卯戌相融情不移。<br>
+            身强身弱终互补，金水运来共腾飞。<br>
+            惟愿珍杰勤珍重，白头偕老永相依。
+        </div>
+        <p style="margin-top:1.2rem; text-align:center;">💍 此合婚为<strong>中上等婚配</strong>，夫妻缘分深厚，五行互有补益。只要在相处中彼此体谅，善用智慧经营，定能白首同心，家业兴旺。</p>
+    </div>
+
+    <div class="footer-note">
+        ⚜️ 命理合婚乃天地之镜，照见潜在趋势 · 此解析融合八字、紫微、八卦诸法，仅供文化研究与生活参考 ⚜️
+    </div>
+</div>
+</body>
+</html>
