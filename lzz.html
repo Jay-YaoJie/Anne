@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>李珍珍 · 1994农历四月十九 · 全命理玄机</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7f3eb;
+            background-image: radial-gradient(circle at 10% 30%, rgba(230, 210, 180, 0.15) 0%, transparent 35%),
+                              radial-gradient(circle at 90% 70%, rgba(200, 180, 140, 0.1) 0%, transparent 40%);
+            font-family: 'Noto Serif SC', 'Times New Roman', '宋体', '仿宋', '华文楷体', '楷体', Georgia, serif;
+            color: #3e2e1f;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        .cosmic-container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 251, 245, 0.75);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            background: #fef9ed;
+            border: 1px solid #dac09a;
+            box-shadow: 0 25px 50px -12px rgba(80, 50, 20, 0.25), inset 0 1px 0 #fff5e6;
+            border-radius: 48px 48px 40px 40px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .cosmic-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.08"><path d="M100 20 L110 60 L150 70 L110 80 L100 120 L90 80 L50 70 L90 60 Z" fill="%23b99a6b"/><circle cx="160" cy="40" r="3" fill="%23b99a6b"/><circle cx="30" cy="150" r="4" fill="%23b99a6b"/></svg>');
+            pointer-events: none;
+        }
+
+        h1 {
+            font-size: 2.7rem;
+            font-weight: 500;
+            text-align: center;
+            letter-spacing: 6px;
+            color: #5d4430;
+            margin-bottom: 0.3rem;
+            text-shadow: 2px 2px 0 rgba(255,245,220,0.8);
+            font-family: "华文楷体", "KaiTi", "楷体", "Noto Serif SC", serif;
+        }
+
+        .sub-name {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 350;
+            color: #8b7355;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            border-bottom: 1px dashed #ccb690;
+            padding-bottom: 1.2rem;
+        }
+
+        .small-name-badge, .eng-name-badge {
+            background: #efe3cf;
+            padding: 0.3rem 1.6rem;
+            border-radius: 40px;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .card {
+            background: rgba(250, 244, 235, 0.7);
+            backdrop-filter: blur(4px);
+            border: 1px solid #e3cfb0;
+            border-radius: 32px;
+            padding: 1.5rem 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 18px rgba(140, 100, 60, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(120, 70, 30, 0.12);
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 400;
+            color: #7b5e3b;
+            border-left: 8px solid #c8a87c;
+            padding-left: 1.2rem;
+            margin-bottom: 1.4rem;
+            font-family: "华文楷体", "KaiTi", serif;
+            letter-spacing: 2px;
+        }
+
+        .bazi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.8rem;
+            text-align: center;
+            margin: 1.2rem 0;
+        }
+
+        .bazi-pillar {
+            background: #f7ede0;
+            border-radius: 28px;
+            padding: 0.7rem 0.2rem;
+            font-weight: 450;
+            box-shadow: inset 0 0 0 1px #e7d7bd;
+        }
+
+        .pillar-title {
+            font-size: 0.75rem;
+            color: #aa8b6e;
+            letter-spacing: 2px;
+        }
+
+        .pillar-content {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #4d3320;
+            line-height: 1.4;
+        }
+
+        .wuxing-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .wuxing-item {
+            background: #f1e6d6;
+            padding: 0.3rem 1.4rem;
+            border-radius: 30px;
+            font-weight: 500;
+            color: #4b3621;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #dac29c, transparent);
+            margin: 1.6rem 0;
+            opacity: 0.5;
+        }
+
+        .two-column {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+
+        .column {
+            flex: 1 1 220px;
+        }
+
+        .poem-text {
+            font-style: italic;
+            background: #f9f2e5;
+            padding: 1.2rem;
+            border-radius: 24px;
+            color: #5b4a36;
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .badge {
+            background: #dac5a5;
+            color: #2d2416;
+            padding: 0.25rem 1rem;
+            border-radius: 16px;
+            font-size: 0.9rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddc7a5;
+            margin: 1.2rem 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #ad8b67;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 500px) {
+            .cosmic-container {
+                padding: 1.8rem 1.2rem;
+            }
+            .bazi-grid {
+                gap: 0.3rem;
+            }
+            .pillar-content {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-container">
+        <h1>🌙 李珍珍 · 命盘玄机</h1>
+        <div class="sub-name">
+            <span class="small-name-badge">🏮 小名：璇玑</span>
+            <span class="eng-name-badge">✨ 英文名：Seraphina Li</span>
+        </div>
+
+        <!-- 八字命盘 · 子平法+禄命法基础 -->
+        <div class="card">
+            <div class="section-title">📜 八字 · 四柱乾坤</div>
+            <div style="text-align:center; color:#7a5d44; margin-bottom:0.5rem;">公历：1994年5月29日 子时 (农历四月十九)</div>
+            <div class="bazi-grid">
+                <div class="bazi-pillar">
+                    <div class="pillar-title">年柱</div>
+                    <div class="pillar-content">甲戌</div>
+                    <div style="font-size:0.8rem;">山头火</div>
+                </div>
+                <div class="bazi-pillar">
+                    <div class="pillar-title">月柱</div>
+                    <div class="pillar-content">己巳</div>
+                    <div style="font-size:0.8rem;">大林木</div>
+                </div>
+                <div class="bazi-pillar">
+                    <div class="pillar-title">日柱</div>
+                    <div class="pillar-content">乙卯</div>
+                    <div style="font-size:0.8rem;">大溪水</div>
+                </div>
+                <div class="bazi-pillar">
+                    <div class="pillar-title">时柱</div>
+                    <div class="pillar-content">丙子</div>
+                    <div style="font-size:0.8rem;">涧下水</div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: center; gap: 1.5rem; margin: 0.8rem 0; color:#6b4f34;">
+                <span>💰 日主：<strong>乙木（花草之木）</strong></span>
+                <span>🌱 身弱·喜水木</span>
+            </div>
+            <div class="wuxing-tags">
+                <span class="wuxing-item">🌲 木: 甲·乙·卯 (旺)</span>
+                <span class="wuxing-item">🔥 火: 巳·丙 (相)</span>
+                <span class="wuxing-item">🏔️ 土: 戌·己 (囚)</span>
+                <span class="wuxing-item">💧 水: 子 (休)</span>
+                <span class="wuxing-item">⚔️ 金: 藏于戌·巳 (弱)</span>
+            </div>
+        </div>
+
+        <!-- 子平法 十神格局 -->
+        <div class="card">
+            <div class="section-title">⚖️ 子平法 · 十神格局</div>
+            <div class="two-column">
+                <div class="column">
+                    <p><strong>🪷 格局：</strong>食神生财，藤萝系甲</p>
+                    <p>月令己土偏财透干，时柱丙火伤官生财。乙木得卯禄，甲木劫财帮身，构成“藤萝系甲”之象，可借用甲木力量而秀美。</p>
+                    <p>🌿 <strong>特性：</strong>外柔内韧，善借力而上，文艺气息浓厚。</p>
+                </div>
+                <div class="column">
+                    <p><strong>🔮 十神分布：</strong></p>
+                    <div class="badge-list">
+                        <span class="badge">年干甲-劫财</span>
+                        <span class="badge">月干己-偏财</span>
+                        <span class="badge">日支卯-比肩</span>
+                        <span class="badge">时干丙-伤官</span>
+                        <span class="badge">时支子-偏印</span>
+                    </div>
+                    <p style="margin-top:0.8rem;">💰 偏财透月，生性慷慨，对美感与财富敏锐。伤官生财，适合艺术、设计、表达类事业。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 盲派法 做功与象法 -->
+        <div class="card">
+            <div class="section-title">🕯️ 盲派法 · 象法直解</div>
+            <p><strong>乙卯日主，坐禄通根。</strong> 卯戌合火（年支戌），巳卯半合木，子卯刑。盲派重效率：日主合财（乙与己合），但己土坐巳火，财有源头。子卯刑代表内心敏感，情感细腻，需注意情绪波动。</p>
+            <p>🌊 <strong>做功路径：</strong> 乙木用卯的根去合戌土财库，又有丙火伤官透出，代表以才华、口才、技艺获取财富。子水偏印为思想，子卯刑也为“玄学缘分”，对神秘文化有天生感应。</p>
+            <p style="font-style:italic; background:#faf3e8; padding:0.5rem 1rem; border-radius:20px;">✨ 盲派口诀：“乙木虽柔，刲羊解牛；怀丁抱丙，跨凤乘猴。” 此局丙火透，虚灵秀气，不富则贵在文采。</p>
+        </div>
+
+        <!-- 禄命法 · 纳音神煞 -->
+        <div class="card">
+            <div class="section-title">🏔️ 禄命法 · 纳音神煞</div>
+            <p><strong>纳音：</strong>甲戌山头火，己巳大林木，乙卯大溪水，丙子涧下水。水火既济，木火通明之象。</p>
+            <p><strong>🌟 神煞择要：</strong></p>
+            <div class="badge-list">
+                <span class="badge">🌹 红艳煞（乙卯日）</span>
+                <span class="badge">🎨 文昌贵人（巳月）</span>
+                <span class="badge">🪷 天厨贵人（丙子）</span>
+                <span class="badge">📚 学堂（乙卯）</span>
+                <span class="badge">⚡ 桃花（子时）</span>
+            </div>
+            <p style="margin-top:0.8rem;">红艳入命，容貌气质出众，人缘佳。文昌学堂汇聚，学识才艺不凡。桃花在子，感情丰富，需修心稳性。</p>
+        </div>
+
+        <!-- 连山易 · 八卦 · 周易 -->
+        <div class="card">
+            <div class="section-title">☯️ 连山易 · 八卦 · 周易玄机</div>
+            <p><strong>连山易视角：</strong> 甲戌年属山火，乙卯日属泽木。连山以艮卦为首，此命艮中藏寅，有山木相依之象，根基稳固，渐进发展。</p>
+            <p><strong>本命卦（以出生年月日计算）：</strong> 1994年5月29日 ➔ 上卦坎（水）下卦震（雷）—— <strong>水雷屯卦</strong>。</p>
+            <div class="poem-text">
+                ⛰️ 屯卦 · 云雷屯，君子以经纶。<br>
+                “刚柔始交而难生”，初创维艰，但动乎险中，大亨贞。需耐心经营，终成栋梁。
+            </div>
+            <p style="margin-top:0.7rem;"><strong>变爻启示：</strong> 六二“屯如邅如，乘马班如”，十年乃字。女子贞不字，待时而行，宜晚婚而稳。</p>
+        </div>
+
+        <!-- 紫微斗数简盘 (子时) -->
+        <div class="card">
+            <div class="section-title">🔮 紫微斗数 · 命宫初探</div>
+            <p><strong>生辰：</strong>甲戌年四月十九日子时 (农历)。排盘得：</p>
+            <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
+                <span style="background:#e8dac1; padding:0.3rem 1.3rem; border-radius:20px;">🌟 命宫：天同+巨门 (亥)</span>
+                <span style="background:#e8dac1; padding:0.3rem 1.3rem; border-radius:20px;">⭐ 身宫：事业宫 (卯)</span>
+                <span style="background:#e8dac1; padding:0.3rem 1.3rem; border-radius:20px;">🌙 夫妻宫：太阴 (酉)</span>
+            </div>
+            <p style="margin-top:0.8rem;">天同巨门坐命，心思细密，口才佳，有艺术审美，略带福气懒散。身宫在事业宫，天机太阴组合，适合策划、文职、美学行业。夫妻宫太阴，配偶温雅清秀。</p>
+        </div>
+
+        <!-- 姓名学 · 李珍珍 -->
+        <div class="card">
+            <div class="section-title">📛 姓名学 · 李珍珍</div>
+            <p><strong>李 (7画·火) + 珍 (9画·金) + 珍 (9画·金)</strong> → 天格8(金)、人格16(土)、地格18(金)、总格25(土)、外格10(水)。</p>
+            <p>🌼 <strong>三才配置：</strong>金-土-金，顺利成功，基础稳固，得上司长辈提携。人格16数理：厚重载德，安富尊荣。地格18数理：有志竟成，但女性用此数需注意感情柔韧。</p>
+            <p>✨ “珍珍”叠字，五行双金，补八字金弱之势，同时增强决断力。但金多略克木（日主），小名与英文名可调和。</p>
+        </div>
+
+        <!-- 小名与英文名玄机 -->
+        <div class="card" style="background: #fcf7ef;">
+            <div class="section-title">🌸 小名 & 英文名 · 命理加成</div>
+            <div style="display:flex; flex-wrap:wrap; gap:2rem; align-items: center;">
+                <div style="flex:1;">
+                    <p><strong>🏮 小名：璇玑</strong> (xuán jī)</p>
+                    <p>璇玑为北斗魁星，亦指美玉、天文仪器。五行属<strong>金水</strong>，补八字喜用神水，并呼应珍珍双金。璇玑灵动，助乙木伤官才华展现，寓意智慧如星辰。</p>
+                </div>
+                <div style="flex:1;">
+                    <p><strong>✨ 英文名：Seraphina Li</strong></p>
+                    <p>Seraphina 源自希伯来语“燃烧的六翼天使”，五行属火（光热），但又含“炽爱”之水象（温柔）。音律优美，补火调候，同时保留李姓。火为食伤，激发创造力，与中文名珍珍相应成趣。</p>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <p style="text-align:center; font-style:italic;">🔮 璇玑转动，星辉映木；Seraphina 引光，乙木逢春。小名与英文名共筑平衡气场。</p>
+        </div>
+
+        <!-- 综合运势提要 -->
+        <div class="card">
+            <div class="section-title">🧘 命理综合 · 璇玑心语</div>
+            <p>李珍珍女士，乙木花木之质，生于巳月，得卯根而柔韧。一生贵人多为属兔、属虎、属猪之人。宜从事文化、艺术、教育、心理咨询等职。感情中子卯刑需沟通化解，晚婚更吉。流年喜水木，忌燥土金多。</p>
+            <p style="margin-top:0.5rem;">🌌 <strong>周易曰：</strong>“随风巽，君子以申命行事。” 柔顺谦逊，而志不可夺。璇玑在握，自放光华。</p>
+        </div>
+
+        <div class="footer-note">
+            ⚜️ 命理为天地之镜，照见潜能 · 此解析融合连山、子平、盲派、紫微、八卦诸法，仅供文化研究及怡情 ⚜️
+        </div>
+    </div>
+</body>
+</html>
