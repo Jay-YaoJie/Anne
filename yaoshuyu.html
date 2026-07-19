@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姚纾渝 · 全命理玄机解析</title>
+    <style>
+        :root {
+            --bg: #0f0e17;
+            --card-bg: #1a1925;
+            --gold: #c9a96e;
+            --gold-light: #d4b97f;
+            --gold-pale: #e8d5a8;
+            --text: #e8e4db;
+            --text-secondary: #b0aca0;
+            --text-muted: #888;
+            --fire: #d46b5a;
+            --earth: #c49a3c;
+            --metal: #d4b97f;
+            --water: #5b8db8;
+            --wood: #6a9e6a;
+            --purple: #9b7fc1;
+            --border: #2a2835;
+            --border-light: #353245;
+            --accent: #b8863f;
+            --highlight: #f0d28b;
+            --shadow: 0 4px 28px rgba(0, 0, 0, 0.45);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            background-image:
+                radial-gradient(ellipse at 50% 6%, rgba(180, 130, 50, 0.07) 0%, transparent 70%),
+                radial-gradient(ellipse at 85% 25%, rgba(160, 120, 40, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse at 15% 72%, rgba(160, 120, 40, 0.03) 0%, transparent 60%);
+            color: var(--text);
+            font-family: "Noto Serif SC", "STSong", "Songti SC", "SimSun", "KaiTi", "楷体", "华文楷体", "STKaiti", serif;
+            min-height: 100vh;
+            line-height: 1.75;
+            letter-spacing: 0.03em;
+            padding: 20px;
+        }
+
+        .main-container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 20px 40px;
+            position: relative;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            border-radius: 2px;
+        }
+        .header .emblem {
+            font-size: 2.6rem;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 2px 10px rgba(200, 160, 80, 0.45));
+            letter-spacing: 0.1em;
+        }
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            background: linear-gradient(180deg, #f0d78c 0%, #c49a3c 50%, #a07828 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.1em;
+        }
+        .header .divider-line {
+            width: 140px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 20px auto 0;
+            opacity: 0.5;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px 28px;
+            margin-bottom: 24px;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: border-color 0.35s;
+        }
+        .card:hover {
+            border-color: var(--border-light);
+        }
+        .card .card-icon {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+        .card h2 {
+            font-size: 1.45rem;
+            letter-spacing: 0.1em;
+            color: var(--gold-light);
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+        .card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 1px;
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            color: #d4b97f;
+            margin: 20px 0 10px;
+            letter-spacing: 0.07em;
+        }
+        .card p {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+        .card .highlight-text {
+            color: var(--gold-pale);
+            font-weight: 600;
+        }
+
+        .bazi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .bazi-pillar {
+            background: #1e1d2b;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .bazi-pillar:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 22px rgba(180, 130, 50, 0.12);
+        }
+        .bazi-pillar .pillar-label {
+            font-size: 0.8rem;
+            color: #888;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+        .bazi-pillar .pillar-stem {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            line-height: 1.2;
+        }
+        .bazi-pillar .pillar-branch {
+            font-size: 1.4rem;
+            color: #c9a96e;
+            letter-spacing: 0.04em;
+        }
+        .bazi-pillar .pillar-element {
+            font-size: 0.7rem;
+            color: #999;
+            margin-top: 4px;
+            letter-spacing: 0.04em;
+        }
+        .stem-fire {
+            color: #e8554d;
+        }
+        .stem-earth {
+            color: #d4a840;
+        }
+        .stem-metal {
+            color: #e8d5b0;
+        }
+        .stem-water {
+            color: #5b8db8;
+        }
+        .stem-wood {
+            color: #7aae7a;
+        }
+
+        .wuxing-bars {
+            margin: 20px 0;
+        }
+        .wuxing-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+            gap: 14px;
+        }
+        .wuxing-label {
+            width: 40px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.08em;
+            flex-shrink: 0;
+        }
+        .wuxing-bar-wrap {
+            flex: 1;
+            height: 24px;
+            background: #1e1d2b;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #2a2835;
+        }
+        .wuxing-bar {
+            height: 100%;
+            border-radius: 12px;
+            transition: width 0.8s ease;
+            position: relative;
+        }
+        .wuxing-val {
+            width: 58px;
+            text-align: right;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+            letter-spacing: 0.04em;
+        }
+        .bar-fire {
+            background: linear-gradient(90deg, #a04038, #d4534a);
+            width: 82%;
+        }
+        .bar-earth {
+            background: linear-gradient(90deg, #8a6e30, #c49a3c);
+            width: 65%;
+        }
+        .bar-wood {
+            background: linear-gradient(90deg, #4a704a, #6a9e6a);
+            width: 38%;
+        }
+        .bar-metal {
+            background: linear-gradient(90deg, #8a8070, #c4b898);
+            width: 28%;
+        }
+        .bar-water {
+            background: linear-gradient(90deg, #3d5f7a, #5b8db8);
+            width: 20%;
+        }
+        .label-fire {
+            color: #d4534a;
+        }
+        .label-earth {
+            color: #c49a3c;
+        }
+        .label-wood {
+            color: #6a9e6a;
+        }
+        .label-metal {
+            color: #c4b898;
+        }
+        .label-water {
+            color: #5b8db8;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #252330;
+            border: 1px solid #3a3545;
+            border-radius: 22px;
+            padding: 6px 18px;
+            margin: 5px 6px;
+            font-size: 0.84rem;
+            color: #c9a96e;
+            letter-spacing: 0.06em;
+            transition: all 0.3s;
+        }
+        .tag:hover {
+            border-color: var(--gold);
+            background: #2d2838;
+        }
+        .tag-gold {
+            background: rgba(180, 130, 50, 0.12);
+            border-color: rgba(180, 130, 50, 0.35);
+            color: #e8c97a;
+        }
+
+        .quote-block {
+            border-left: 3px solid var(--gold);
+            padding: 16px 22px;
+            margin: 20px 0;
+            background: rgba(180, 130, 50, 0.04);
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #d4c8a8;
+            letter-spacing: 0.05em;
+            line-height: 1.9;
+        }
+
+        .wuxing-cycle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+            padding: 18px;
+            background: #1e1d2b;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+        }
+        .wuxing-cycle .wx-item {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            border: 2px solid;
+            transition: all 0.3s;
+        }
+        .wx-fire {
+            background: rgba(212, 83, 74, 0.2);
+            border-color: #d4534a;
+            color: #d4534a;
+        }
+        .wx-earth {
+            background: rgba(196, 154, 60, 0.2);
+            border-color: #c49a3c;
+            color: #c49a3c;
+        }
+        .wx-metal {
+            background: rgba(200, 180, 150, 0.2);
+            border-color: #c4b898;
+            color: #c4b898;
+        }
+        .wx-water {
+            background: rgba(91, 141, 184, 0.2);
+            border-color: #5b8db8;
+            color: #5b8db8;
+        }
+        .wx-wood {
+            background: rgba(106, 158, 106, 0.2);
+            border-color: #6a9e6a;
+            color: #6a9e6a;
+        }
+        .wx-arrow {
+            color: #777;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .name-chars {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin: 22px 0;
+        }
+        .name-char-card {
+            background: #1e1d2b;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 24px;
+            text-align: center;
+            min-width: 85px;
+            transition: all 0.3s;
+        }
+        .name-char-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(180, 130, 50, 0.12);
+        }
+        .name-char-card .char-big {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            line-height: 1.1;
+        }
+        .name-char-card .char-strokes {
+            font-size: 0.82rem;
+            color: #999;
+            margin-top: 6px;
+        }
+        .name-char-card .char-wx {
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            margin-top: 6px;
+            letter-spacing: 0.06em;
+        }
+
+        .dayun-table,
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        .dayun-table th,
+        .compare-table th {
+            background: #1e1d2b;
+            color: var(--gold-light);
+            padding: 12px 10px;
+            text-align: center;
+            letter-spacing: 0.06em;
+            border-bottom: 2px solid var(--border);
+            font-weight: 600;
+        }
+        .dayun-table td,
+        .compare-table td {
+            padding: 11px 8px;
+            text-align: center;
+            border-bottom: 1px solid #1e1d2b;
+            color: var(--text-secondary);
+            letter-spacing: 0.04em;
+        }
+        .dayun-table tr:hover td,
+        .compare-table tr:hover td {
+            background: rgba(180, 130, 50, 0.04);
+            color: var(--gold-pale);
+        }
+        .dayun-highlight {
+            color: #e8c97a !important;
+            font-weight: 600;
+        }
+
+        .nickname-card {
+            background: #1e1d2b;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin: 12px 0;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .nickname-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 18px rgba(180, 130, 50, 0.08);
+        }
+        .nickname-card .nickname-big {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold-pale);
+            letter-spacing: 0.1em;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 32px 10px;
+            color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 0.07em;
+            border-top: 1px solid #1e1d2b;
+            margin-top: 14px;
+        }
+        .footer-note span {
+            color: #777;
+        }
+
+        @media (max-width: 640px) {
+            .bazi-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header .emblem {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 20px 16px;
+            }
+            .card h2 {
+                font-size: 1.2rem;
+            }
+            .name-chars {
+                gap: 12px;
+            }
+            .name-char-card {
+                min-width: 65px;
+                padding: 14px 12px;
+            }
+            .name-char-card .char-big {
+                font-size: 2.4rem;
+            }
+            .wuxing-cycle {
+                gap: 6px;
+            }
+            .wuxing-cycle .wx-item {
+                width: 40px;
+                height: 40px;
+                font-size: 0.75rem;
+            }
+            .dayun-table,
+            .compare-table {
+                font-size: 0.72rem;
+            }
+            .dayun-table th,
+            .dayun-table td,
+            .compare-table th,
+            .compare-table td {
+                padding: 7px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+
+        <!-- ========== 头部 ========== -->
+        <header class="header">
+            <div class="emblem">☰ 坤元 · 连山 · 紫微 ☷</div>
+            <h1>姚纾渝</h1>
+            <p class="subtitle">全命理玄机解析</p>
+            <p class="subtitle" style="font-size:0.82rem;margin-top:6px;">八字 · 五行 · 连山易 · 八卦 · 紫微 · 周易 · 姓名学 · 禄命法 · 子平法 · 盲派法</p>
+            <div class="divider-line"></div>
+        </header>
+
+        <!-- ========== 一、八字命盘（子平法 + 禄命法） ========== -->
+        <section class="card">
+            <div class="card-icon">📜</div>
+            <h2>一、八字命盘 · 四柱全览（子平法 · 禄命法）</h2>
+            <p>公历：<span class="highlight-text">2026年2月23日 20:45</span>（农历正月初七）</p>
+            <p>性别：<span class="highlight-text">女</span> &nbsp;|&nbsp; 日主：<span class="highlight-text" style="color:#d4a840;">戊土</span>（高山厚土之命）</p>
+            <p>八字全称：<strong style="color:#c9a96e;">丙午 庚寅 戊辰 壬戌</strong></p>
+
+            <div class="bazi-grid">
+                <div class="bazi-pillar">
+                    <div class="pillar-label">年柱</div>
+                    <div class="pillar-stem stem-fire">丙</div>
+                    <div class="pillar-branch">午</div>
+                    <div class="pillar-element">🔥 火火 · 天河水</div>
+                </div>
+                <div class="bazi-pillar">
+                    <div class="pillar-label">月柱</div>
+                    <div class="pillar-stem stem-metal">庚</div>
+                    <div class="pillar-branch">寅</div>
+                    <div class="pillar-element">⚙️ 金木 · 松柏木</div>
+                </div>
+                <div class="bazi-pillar">
+                    <div class="pillar-label">日柱</div>
+                    <div class="pillar-stem stem-earth">戊</div>
+                    <div class="pillar-branch">辰</div>
+                    <div class="pillar-element">⛰️ 土土 · 大林木</div>
+                </div>
+                <div class="bazi-pillar">
+                    <div class="pillar-label">时柱</div>
+                    <div class="pillar-stem stem-water">壬</div>
+                    <div class="pillar-branch">戌</div>
+                    <div class="pillar-element">💧 水土 · 大海水</div>
+                </div>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:10px;">
+                <span class="tag tag-gold">🔥 丙午年 · 天河水</span>
+                <span class="tag tag-gold">🌳 庚寅月 · 松柏木</span>
+                <span class="tag tag-gold">⛰️ 戊辰日 · 大林木</span>
+                <span class="tag tag-gold">💧 壬戌时 · 大海水</span>
+            </div>
+
+            <h3>藏干详析（盲派法 · 透干通根）</h3>
+            <p><strong>年支午：</strong>藏丁火（正印）、己土（劫财）</p>
+            <p><strong>月支寅：</strong>藏甲木（七杀）、丙火（偏印）、戊土（比肩）</p>
+            <p><strong>日支辰：</strong>藏乙木（正官）、戊土（比肩）、癸水（正财）</p>
+            <p><strong>时支戌：</strong>藏辛金（伤官）、丁火（正印）、戊土（比肩）</p>
+
+            <h3>禄命法 · 纳音五行</h3>
+            <p>年柱天河水，月柱松柏木，日柱大林木，时柱大海水。水木相生，纳音有情，主一生有贵人相助，根基稳固。</p>
+
+            <h3>盲派法 · 要点</h3>
+            <p>日主戊土坐辰，时支戌土为根，身强能任财官。月干庚金食神透出，制月令寅中甲木七杀，为“食神制杀”之局。时干壬水偏财透出，坐戌土为财库，主中年之后财运丰隆。盲派口诀云：“食神制杀，英雄独压万人”，此命格有魄力、有担当，能成大事。</p>
+        </section>
+
+        <!-- ========== 二、五行力量分析 ========== -->
+        <section class="card">
+            <div class="card-icon">☯️</div>
+            <h2>二、五行力量 · 生克制化</h2>
+
+            <div class="wuxing-bars">
+                <div class="wuxing-row">
+                    <span class="wuxing-label label-fire">火</span>
+                    <div class="wuxing-bar-wrap"><div class="wuxing-bar bar-fire"></div></div>
+                    <span class="wuxing-val">旺 · 82%</span>
+                </div>
+                <div class="wuxing-row">
+                    <span class="wuxing-label label-earth">土</span>
+                    <div class="wuxing-bar-wrap"><div class="wuxing-bar bar-earth"></div></div>
+                    <span class="wuxing-val">相 · 65%</span>
+                </div>
+                <div class="wuxing-row">
+                    <span class="wuxing-label label-wood">木</span>
+                    <div class="wuxing-bar-wrap"><div class="wuxing-bar bar-wood"></div></div>
+                    <span class="wuxing-val">休 · 38%</span>
+                </div>
+                <div class="wuxing-row">
+                    <span class="wuxing-label label-metal">金</span>
+                    <div class="wuxing-bar-wrap"><div class="wuxing-bar bar-metal"></div></div>
+                    <span class="wuxing-val">囚 · 28%</span>
+                </div>
+                <div class="wuxing-row">
+                    <span class="wuxing-label label-water">水</span>
+                    <div class="wuxing-bar-wrap"><div class="wuxing-bar bar-water"></div></div>
+                    <span class="wuxing-val">死 · 20%</span>
+                </div>
+            </div>
+
+            <h3>五行相生流转</h3>
+            <div class="wuxing-cycle">
+                <span class="wx-item wx-fire">🔥火</span>
+                <span class="wx-arrow">→生→</span>
+                <span class="wx-item wx-earth">⛰️土</span>
+                <span class="wx-arrow">→生→</span>
+                <span class="wx-item wx-metal">⚙️金</span>
+                <span class="wx-arrow">→生→</span>
+                <span class="wx-item wx-water">💧水</span>
+                <span class="wx-arrow">→生→</span>
+                <span class="wx-item wx-wood">🌳木</span>
+                <span class="wx-arrow">→生→</span>
+                <span class="wx-item wx-fire" style="opacity:0.7;">🔥火</span>
+            </div>
+
+            <p><strong>格局总评：</strong>日主<span class="highlight-text">戊土</span>生于初春寅月，寒气未消。年柱<strong style="color:#d4534a;">丙午旺火</strong>驱散春寒，格局转暖。月令寅木为七杀，月干庚金食神制之，年干丙火偏印化之。此为「<span class="highlight-text">食神制杀</span>」配「<span class="highlight-text">偏印化杀</span>」的贵格，聪慧果敢，有勇有谋，具领导才能。火土偏旺，金水偏弱，需补金水以平衡命局。</p>
+        </section>
+
+        <!-- ========== 三、连山易排盘与解读 ========== -->
+        <section class="card">
+            <div class="card-icon">⛰️</div>
+            <h2>三、连山易 · 艮卦为首 · 排盘解析</h2>
+            <div class="quote-block">
+                「连山者，象山之出云，连连不绝也。艮为山，山山相连，重根固本，以应坤元之德。」
+            </div>
+            <p>连山易以<strong style="color:#c9a96e;">艮卦（☶）</strong>为首，象征群山连绵，重视根基与变易之道。命主<strong style="color:#d4a840;">戊土</strong>日主，正是高山厚土的化身，与连山易精髓天然契合。</p>
+
+            <h3>⛰️ 连山易排盘</h3>
+            <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:16px 0;">
+                <div style="text-align:center;background:#1e1d2b;padding:16px 20px;border-radius:12px;border:1px solid var(--border);">
+                    <div style="font-size:3rem;">☶</div>
+                    <div style="color:#c9a96e;">本卦 · 艮为山</div>
+                    <div style="color:#888;font-size:0.8rem;">山山相连 · 根基稳固</div>
+                </div>
+                <div style="text-align:center;background:#1e1d2b;padding:16px 20px;border-radius:12px;border:1px solid var(--border);">
+                    <div style="font-size:3rem;">☶☶</div>
+                    <div style="color:#c9a96e;">互卦 · 兼山艮</div>
+                    <div style="color:#888;font-size:0.8rem;">重峦叠嶂 · 厚德载物</div>
+                </div>
+                <div style="text-align:center;background:#1e1d2b;padding:16px 20px;border-radius:12px;border:1px solid var(--border);">
+                    <div style="font-size:3rem;">☷</div>
+                    <div style="color:#c9a96e;">应卦 · 坤为地</div>
+                    <div style="color:#888;font-size:0.8rem;">大地包容 · 坤元之德</div>
+                </div>
+            </div>
+
+            <h3>⛰️ 根基深厚（连山初爻）</h3>
+            <p>日柱<strong>戊辰</strong>，辰为水库亦为土根，内藏乙木、戊土、癸水，蕴生机于厚重之中。连山易强调“山根稳固，方能承载万物”，命主内心有乾坤，行事稳重，胸襟开阔。</p>
+
+            <h3>🔄 气运流转（连山变爻）</h3>
+            <p>月令<strong>寅木</strong>为七杀，代表压力与挑战。年上<strong>丙午火</strong>印星化杀，形成「<span class="highlight-text">杀印相生</span>」的佳局。连山易重“变易”，此命格正体现了压力化为动力、挑战转为机遇的玄妙法则。</p>
+
+            <h3>🌊 变易之机（连山应爻）</h3>
+            <p>时柱<strong>壬戌</strong>，壬水为偏财，透于时干，主中年后运程多变，机遇涌现。连山易云：“山高水长，动静相宜”，命主宜守正出奇，在稳固根基之上把握时代之变。</p>
+        </section>
+
+        <!-- ========== 四、八卦配命（周易） ========== -->
+        <section class="card">
+            <div class="card-icon">☯️</div>
+            <h2>四、八卦配命 · 周易爻辞启示</h2>
+            <p>以出生年月日时起卦：</p>
+            <p><strong>主卦：䷕ 山火贲</strong> &nbsp;|&nbsp; <strong>变卦：䷙ 山天大畜</strong></p>
+
+            <div class="quote-block">
+                <strong>䷕ 山火贲（贲卦）· 爻辞：</strong>“贲其趾，舍车而徒。” 山下有火，光明辉映。主外有光华，内有底蕴，宜注重内在修养，不慕虚名，脚踏实地。<br><br>
+                <strong>䷙ 山天大畜（大畜卦）· 爻辞：</strong>“利涉大川，应乎天也。” 天在山中，蓄养深厚。主厚积薄发，大器晚成，需耐心积累，终有大成。
+            </div>
+            <p>两卦皆以<strong>艮（山）</strong>为体，与连山易首艮之旨高度一致。命主如高山藏天，内蕴无穷潜力，待时而发，必成大器。</p>
+        </section>
+
+        <!-- ========== 五、紫微斗数 ========== -->
+        <section class="card">
+            <div class="card-icon">🌟</div>
+            <h2>五、紫微斗数 · 命盘精要</h2>
+            <p>以公历2026年2月23日20:45起盘：</p>
+            <div class="compare-table" style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr><th>宫位</th><th>主星</th><th>辅星</th><th>简析</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>命宫</td><td>天机</td><td>文昌、文曲</td><td>聪明机敏，学习力强，文采出众</td></tr>
+                        <tr><td>兄弟宫</td><td>太阳</td><td>天魁</td><td>兄弟姐妹有助力，贵人运佳</td></tr>
+                        <tr><td>夫妻宫</td><td>天同</td><td>天钺</td><td>配偶温和体贴，感情和谐美满</td></tr>
+                        <tr><td>子女宫</td><td>太阴</td><td>左辅</td><td>子女聪慧温柔，得力有助</td></tr>
+                        <tr><td>财帛宫</td><td>武曲</td><td>禄存</td><td>财运丰隆，理财能力强，中年后财富积累显著</td></tr>
+                        <tr><td>疾厄宫</td><td>天相</td><td>—</td><td>健康状况总体良好，注意脾胃保养</td></tr>
+                        <tr><td>迁移宫</td><td>七杀</td><td>火星</td><td>外出发展有利，但有奔波之象，宜稳中求进</td></tr>
+                        <tr><td>交友宫</td><td>巨门</td><td>右弼</td><td>朋友中多能言善辩之士，需谨慎择友</td></tr>
+                        <tr><td>官禄宫</td><td>廉贞</td><td>天魁</td><td>事业有领导才能，适合管理、策划类工作</td></tr>
+                        <tr><td>田宅宫</td><td>天府</td><td>—</td><td>房产运佳，家庭稳固，晚年安居乐业</td></tr>
+                        <tr><td>福德宫</td><td>紫微</td><td>天钺</td><td>福泽深厚，晚年享福，心境从容</td></tr>
+                        <tr><td>父母宫</td><td>贪狼</td><td>—</td><td>父母能力较强，但需注意沟通方式</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p><strong>紫微总评：</strong>命宫天机坐守，聪慧过人，文昌文曲辅佐，学业文采出众。财帛宫武曲禄存，财运丰隆，理财有方。官禄宫廉贞天魁，事业有领导之才。整体命盘格局清贵，配合八字杀印相生，前途不可限量。</p>
+        </section>
+
+        <!-- ========== 六、姓名全解析：姚纾渝 ========== -->
+        <section class="card">
+            <div class="card-icon">🖋️</div>
+            <h2>六、姓名全解析 · 姚纾渝（姓名学）</h2>
+
+            <div class="name-chars">
+                <div class="name-char-card">
+                    <div class="char-big" style="color:#d4a840;">姚</div>
+                    <div class="char-strokes">9画 · 土</div>
+                    <div class="char-wx">⛰️ 根基所在</div>
+                </div>
+                <div class="name-char-card">
+                    <div class="char-big" style="color:#d4b97f;">纾</div>
+                    <div class="char-strokes">10画 · 金</div>
+                    <div class="char-wx">⚙️ 宽缓从容</div>
+                </div>
+                <div class="name-char-card">
+                    <div class="char-big" style="color:#5b8db8;">渝</div>
+                    <div class="char-strokes">12画 · 水</div>
+                    <div class="char-wx">💧 变通智慧</div>
+                </div>
+            </div>
+
+            <p style="text-align:center;"><strong>五行流向：</strong><span class="highlight-text">姚(土) → 纾(金) → 渝(水)</span> &nbsp;|&nbsp; 土生金，金生水，<strong>完美顺生，一气呵成</strong></p>
+
+            <h3>📐 三才五格（姓名学）</h3>
+            <p><strong>天格：</strong>10（水）&nbsp;|&nbsp; <strong>人格：</strong>19（水）&nbsp;|&nbsp; <strong>地格：</strong>22（木）&nbsp;|&nbsp; <strong>总格：</strong>31（木）&nbsp;|&nbsp; <strong>外格：</strong>13（火）</p>
+            <p>三才配置：<span class="highlight-text">水-水-木</span>，水生木，顺生有情，主聪慧温和，人际关系和谐。总格31为木，为“春日花开”之数，智勇得志，博得名利，统领众人，繁荣富贵。</p>
+
+            <h3>⚙️ 纾（金）· 字义深解</h3>
+            <p><strong>本义：</strong>宽缓、解除。《说文》：“纾，缓也。”<br>
+                <strong>文化意象：</strong>“纾困解难”——化解困境，从容不迫；“宽纾有余”——心境宽和，不急不躁。<br>
+            <strong>命理作用：</strong>补益金行，增强食伤之力。食伤主才华与表达。金得土生，才华有根，不张扬，不刻意。</p>
+
+            <h3>💧 渝（水）· 字义深解</h3>
+            <p><strong>本义：</strong>改变、变通；亦指渝水。<br>
+                <strong>文化意象：</strong>“矢志不渝”——坚守初心；“渝水汤汤”——通达无碍。<br>
+            <strong>命理作用：</strong>补益水行，增强财星之力。水主智慧与财运。水得金生，智慧有源，灵活应变。</p>
+
+            <h3>✨ 纾 + 渝 = 绝妙组合</h3>
+            <p><strong>命理层面：</strong>金水相生，才华化为智慧与财富，源源不绝。<br>
+                <strong>字义层面：</strong>从容而不迂腐，变通而不失节。内心从容，方能灵活应变；宽舒有余，方可通达无阻。<br>
+            <strong>气质层面：</strong>温润如玉，柔韧有智。不急不躁，心中自有山海；不争不抢，万物皆为清流。</p>
+        </section>
+
+        <!-- ========== 七、小名 & 英文名 ========== -->
+        <section class="card">
+            <div class="card-icon">🌟</div>
+            <h2>七、小名 · 乳名 · 英文名</h2>
+
+            <h3>🎀 首选小名</h3>
+            <div class="nickname-card">
+                <div class="nickname-big">小渝</div>
+                <p style="color:#b0aca0;">Xiǎo Yú · 取自大名“渝”字，亲切可爱，五行属水，补益智慧与财运</p>
+            </div>
+            <div class="nickname-card">
+                <div class="nickname-big">渝儿</div>
+                <p style="color:#b0aca0;">Yú ér · 儿化音娇俏可人，如珠如玉，温婉动听</p>
+            </div>
+
+            <h3>🎀 备选小名</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
+                <span class="tag tag-gold">小纾（Xiǎo Shū）</span>
+                <span class="tag tag-gold">阿渝（Ā Yú）</span>
+                <span class="tag tag-gold">纾儿（Shū ér）</span>
+                <span class="tag tag-gold">渝渝（Yú Yú）</span>
+                <span class="tag tag-gold">小汐（Xiǎo Xī）</span>
+                <span class="tag tag-gold">小锦（Xiǎo Jǐn）</span>
+            </div>
+
+            <h3>🌍 英文名建议</h3>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>英文名</th>
+                        <th>发音关联</th>
+                        <th>寓意</th>
+                        <th>气质</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong style="color:#e8d5a8;">Yulia</strong></td>
+                        <td>与“渝”音近</td>
+                        <td>青春、柔和</td>
+                        <td>优雅温柔</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color:#e8d5a8;">Serena</strong></td>
+                        <td>与“纾”音近</td>
+                        <td>宁静、从容</td>
+                        <td>恬静淡定</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color:#e8d5a8;">Sylvie</strong></td>
+                        <td>与“纾渝”韵近</td>
+                        <td>来自森林，自然灵动</td>
+                        <td>清新华美</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color:#e8d5a8;">Iris</strong></td>
+                        <td>意境相合</td>
+                        <td>彩虹女神，智慧灵动</td>
+                        <td>聪慧优雅</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color:#e8d5a8;">Juno</strong></td>
+                        <td>意境相合</td>
+                        <td>罗马天后，高贵从容</td>
+                        <td>贵气温婉</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top:8px;"><strong>首选推荐：Serena</strong>，意为“宁静、从容”，与“纾”字的宽缓从容完美呼应，听感高级温柔，与小名“小渝”“渝儿”搭配使用相得益彰。</p>
+        </section>
+
+        <!-- ========== 八、大运简览 ========== -->
+        <section class="card">
+            <div class="card-icon">📅</div>
+            <h2>八、大运简览（子平法）</h2>
+            <table class="dayun-table">
+                <thead>
+                    <tr>
+                        <th>年龄段</th>
+                        <th>大运</th>
+                        <th>五行</th>
+                        <th>运势要点</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0-10岁</td>
+                        <td>辛卯</td>
+                        <td>金木</td>
+                        <td>早慧聪颖，学业初成</td>
+                    </tr>
+                    <tr>
+                        <td>10-20岁</td>
+                        <td class="dayun-highlight">壬辰</td>
+                        <td>水土</td>
+                        <td>智慧开启，学业精进</td>
+                    </tr>
+                    <tr>
+                        <td>20-30岁</td>
+                        <td>癸巳</td>
+                        <td>水火</td>
+                        <td>机遇涌现，事业起步</td>
+                    </tr>
+                    <tr>
+                        <td>30-40岁</td>
+                        <td class="dayun-highlight">甲午</td>
+                        <td>木火</td>
+                        <td>杀印相生，事业腾飞</td>
+                    </tr>
+                    <tr>
+                        <td>40-50岁</td>
+                        <td>乙未</td>
+                        <td>木土</td>
+                        <td>正官到位，名利双收</td>
+                    </tr>
+                    <tr>
+                        <td>50岁+</td>
+                        <td class="dayun-highlight">丙申</td>
+                        <td>火金</td>
+                        <td>印星得力，晚景荣华</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ========== 九、综合论断 ========== -->
+        <section class="card">
+            <div class="card-icon">🔮</div>
+            <h2>九、全命理 · 综合论断</h2>
+
+            <h3>👤 性格特质（子平法 + 盲派法）</h3>
+            <p>戊土日主，待人<strong>真诚信实</strong>，有包容心。杀印相生，<strong>思维敏捷，悟性极高</strong>。外表沉稳，内心坚韧。名字“纾渝”赋予从容舒缓的气质，善于化解矛盾，以柔克刚。紫微天机入命，文昌文曲辅佐，学习力强，才华横溢。</p>
+
+            <h3>💼 事业格局</h3>
+            <p>「食神制杀」配「偏印化杀」，是典型的<strong>领导型人才</strong>格局。紫微官禄宫廉贞天魁，事业有领导之才。适合管理、策划、文化教育、公共事务等领域。中年之后（时柱壬戌运），偏财透出，武曲禄存在财帛宫，<strong>财运丰隆，财富积累显著</strong>。</p>
+
+            <h3>❤️ 情感与人际</h3>
+            <p>戊土女命，感情忠厚真挚。日支辰土为配偶宫，藏乙木正官，紫微夫妻宫天同天钺，主<strong>配偶温和体贴，感情和谐美满</strong>。“矢志不渝”四字，恰是情感生活的最佳写照。</p>
+
+            <h3>⚠️ 注意事项</h3>
+            <p>土旺火炎，需防<strong>脾胃燥热</strong>，宜多食滋润之物。性格上避免过于固执，多听取他人意见。“纾”字可提醒自己宽缓从容。每逢<strong>虎年（寅）、马年（午）</strong>，运势波动较大，宜稳中求进。紫微七杀在迁移宫，外出发展需防奔波劳碌。</p>
+        </section>
+
+        <!-- ========== 十、总论 ========== -->
+        <section class="card">
+            <div class="card-icon">🏔️</div>
+            <h2>十、总论</h2>
+            <p>五行顺生，命理契合，字义深远。八字、紫微、连山、周易、姓名学，五法合一，皆指向同一个结论——此命格清贵，根基稳固，前途不可限量。</p>
+            <p>连山易云：“山山相连，根深则叶茂。” 周易大畜卦云：“利涉大川，应乎天也。” 紫微天机文昌入命，才华横溢；武曲禄存入财帛，财运丰隆。</p>
+            <p>这个名字赋予她的是——</p>
+            <div class="quote-block">
+                <strong>从容不迫的气度，以柔克刚的智慧，<br>
+                矢志不渝的坚守，变通无碍的灵动。</strong>
+            </div>
+            <p style="text-align:center;font-size:1.15rem;color:#e8d5a8;">温润如玉，越品越醇。</p>
+            <p style="text-align:center;">愿姚纾渝（小渝 · 渝儿）一生安宁顺遂，从容有度，福慧双修。</p>
+        </section>
+
+        <!-- ========== 底部 ========== -->
+        <footer class="footer-note">
+            <span>连山归藏 · 易理玄微 · 紫微星动 · 命格天成 · 字蕴枢机</span><br>
+            <span style="font-size:0.7rem;">以上分析综合八字命理（子平法·禄命法·盲派法）、五行生克、连山易、周易八卦、紫微斗数与姓名学，仅供参考。命运掌握在自己手中，名字是祝福，亦是自勉。</span>
+        </footer>
+
+    </div>
+</body>
+</html>
